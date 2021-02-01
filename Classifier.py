@@ -81,6 +81,7 @@ def Model(df):
 
     predictions = model.predict(X_test)
     print(classification_report(Y_test, predictions))
+    print("Worked successfully")
 
     '''def Train(model, train_feature_vector, label, test_feature_vector):
         model.fit(test_feature_vector, label)
