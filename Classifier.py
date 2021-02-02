@@ -58,10 +58,13 @@ def PPT(df):
     stemmer = PorterStemmer()
     df["parsed tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
     
+    # Stemming each word of the tweets
+    stemmer = PorterStemmer()
+    df["tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
+    
     # Tokenize each word
-    print(df["tweet"])
-    df["tweet"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
-    print(df["tweet"])
+    df["parsed tweets"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
+    print(df[["tweet", "parsed tweets"]])
 
 # Word cloud generator based on the parsed data
 def Wordcloud(df): 
