@@ -56,7 +56,7 @@ def PPT(df):
     
     # Tokenize each word
     print(df["tweet"])
-    df["tweet"] = nltk.WordPunctTokenizer().tokenize(df["tweet"])
+    df["tweet"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
     print(df["tweet"])
 
     # Stemming each word of the tweets
