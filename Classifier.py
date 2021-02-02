@@ -76,7 +76,7 @@ def Wordcloud(df):
 def Model(df):
 
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
-    tfidf_scores = df["parsed tweets].apply(lambda x: x.TfidfTransformer(norm=None))
+    tfidf_scores = df["parsed tweets"].apply(lambda x: x.TfidfTransformer(norm=None))
     print(tfidf_scores)
     '''X_train_vectorized = vectorizer.fit_transform(X_train)
     
