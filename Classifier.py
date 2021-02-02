@@ -53,10 +53,15 @@ def PPT(df):
 
     # Removing numbers
     df["tweet"] = df["tweet"].str.replace("[{}]".format(string.digits), "")
+    
+    # Tokenize each word
+    print(df["tweet"])
+    df["tweet"] = nltk.WordPunctTokenizer().tokenize(df["tweet"])
+    print(df["tweet"])
 
     # Stemming each word of the tweets
     stemmer = PorterStemmer()
-    df["stemmed tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
+    df["parsed tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
 
 # Word cloud generator based on the parsed data
 def Wordcloud(df): 
@@ -108,4 +113,3 @@ Label(file_data)
 PPT(file_data)
 Wordcloud(file_data)
 Model(file_data)
-print("gtg")
