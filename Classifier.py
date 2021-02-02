@@ -53,14 +53,10 @@ def PPT(df):
 
     # Removing numbers
     df["tweet"] = df["tweet"].str.replace("[{}]".format(string.digits), "")
-
-    # Stemming each word of the tweets
-    stemmer = PorterStemmer()
-    df["parsed tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
     
     # Stemming each word of the tweets
     stemmer = PorterStemmer()
-    df["tweet"] = df["tweet"].apply(lambda x: "" "".join([stemmer.stem(word) for word in x.split()])) 
+    df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()])) 
     
     # Tokenize each word
     df["parsed tweets"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
