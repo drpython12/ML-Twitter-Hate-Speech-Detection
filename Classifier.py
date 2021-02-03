@@ -12,7 +12,6 @@ from nltk.stem import PorterStemmer
 import string
 from wordcloud import WordCloud
 import matplotlib.pyplot as plot
-import texthero
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
 file_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
