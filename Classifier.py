@@ -12,6 +12,7 @@ from nltk.stem import PorterStemmer
 import string
 from wordcloud import WordCloud
 import matplotlib.pyplot as plot
+import texthero
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
 file_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
@@ -76,8 +77,8 @@ def Wordcloud(df):
 def Model(df):
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
     vectorizer = TfidfVectorizer()
-    response = vectorizer.fit_transform(df["parsed tweets"])
-    print(response.toarray())
+    df["tfidf scores"] = texthero.tfidf(df["parsed tweets"])
+    print(df["tfidf scores"])
     
     '''X_train_vectorized = vectorizer.fit_transform(X_train)
     
