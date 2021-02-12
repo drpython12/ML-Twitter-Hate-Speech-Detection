@@ -2,9 +2,7 @@ import tweepy
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 from tweepy import Stream
-
 import csv
-
 import APICredentials
 
 class Authenticate():
