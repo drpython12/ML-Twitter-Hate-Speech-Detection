@@ -10,7 +10,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import string
-from wordcloud import WordCloud
+# from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
@@ -63,14 +63,14 @@ def PPT(df):
     print(df[["tweet", "parsed tweets"]])
 
 # Word cloud generator based on the parsed data
-def Wordcloud(df): 
+'''def Wordcloud(df): 
     # Creating a long string of all tweets classified as hate speech
     words = " ".join([word for word in df["tweet"][df["refined class"] == 1]])
     wc = WordCloud(width=800, height=500, max_font_size=110, max_words=80).generate(words)
     plot.figure(figsize=(12,8))
     plot.axis('off')
     plot.imshow(wc)
-    plot.show()
+    plot.show()'''
 
 # Trains the model
 def Model(df):
@@ -78,6 +78,9 @@ def Model(df):
     vectorizer = TfidfVectorizer()
     tweets_list = df["tweet"].tolist()
     print(tweets_list)
+    vectorizer.fit(tweets_list)
+    print(vectorizer.vocabulary_)
+    print(vectorizer.idf_)
     
     '''X_train_vectorized = vectorizer.fit_transform(X_train)
     
@@ -111,5 +114,4 @@ def Model(df):
 
 Label(file_data)
 PPT(file_data)
-Wordcloud(file_data)
 Model(file_data)
