@@ -77,26 +77,15 @@ def Model(df):
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
     vectorizer = TfidfVectorizer()
     tweets_list = df["tweet"].tolist()
-    print(tweets_list)
     vectorizer.fit(tweets_list)
     print(vectorizer.vocabulary_)
     print(vectorizer.idf_)
     
-    '''X_train_vectorized = vectorizer.fit_transform(X_train)
-    
     model = LogisticRegression()
-    model.fit(X_train_vectorized, Y_train)
+    model.fit(tweets_list, Y_train)
 
     predictions = model.predict(X_test)
     print(classification_report(Y_test, predictions))
-    
-    def Train(model, train_feature_vector, label, test_feature_vector):
-        model.fit(test_feature_vector, label)
-        predict = model.predict(test_feature_vector)
-        return predict
-
-    print(roc_auc_score(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))
-    print(classification_report(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))'''
 
     '''X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
     vectorizer = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', max_features=2000)
