@@ -76,15 +76,14 @@ def PPT(df):
 def Model(df):
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
     vectorizer = TfidfVectorizer()
-    tweets_list = df["tweet"].tolist()
-    vectorizer.fit(tweets_list)
-    print(vectorizer.vocabulary_)
-    print(vectorizer.idf_)
+    train_tweets_list = X_train.tolist()
+    test_tweets_list = X_test.tolist()
+    X_train_text = vectorizer.fit_transform(train_tweets_list)
+    X_test_text = vectorizer.transform(test_tweets_list)
     
     model = LogisticRegression()
-    model.fit(tweets_list, Y_train)
-
-    predictions = model.predict(X_test)
+    model.fit(X_train_text, Y_train)
+    predictions = model.predict(X_test_text)
     print(classification_report(Y_test, predictions))
 
     '''X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
