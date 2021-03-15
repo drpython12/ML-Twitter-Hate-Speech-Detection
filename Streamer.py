@@ -42,11 +42,11 @@ class Login():
         
 if __name__ == "__main__":
     Login()
-    listener = Listener("tweets.csv")
+    listener = Listener("imported tweets.csv")
     auth = OAuthHandler(APICredentials.consumer_key, APICredentials.consumer_key_secret)
     auth.set_access_token(APICredentials.access_token, APICredentials.access_token_secret)
     api = tweepy.API(auth)
-    with open("tweets.csv", 'a+', newline='') as TweetCSV:
+    with open("imported tweets.csv", 'a+', newline='') as TweetCSV:
             writer = csv.writer(TweetCSV)
             for tweet in tweepy.Cursor(api.search, q='', lang = 'en', count=5).items():
                 writer.writerow([tweet.id, tweet.created_at, tweet.text])

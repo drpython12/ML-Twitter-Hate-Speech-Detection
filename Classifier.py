@@ -60,7 +60,6 @@ def PPT(df):
     
     # Tokenize each word
     df["parsed tweets"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
-    print(df[["tweet", "parsed tweets"]])
 
 # Word cloud generator based on the parsed data
 def Wordcloud(df): 
