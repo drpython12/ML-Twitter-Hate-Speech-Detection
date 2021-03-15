@@ -115,3 +115,11 @@ Label(file_data)
 PPT(file_data)
 Model(file_data)
 Wordcloud(file_data)
+
+to_be_analysed = pd.read_csv("imported tweets.csv")
+
+# If user input from UI asks to analyse tweets
+
+Label(to_be_analysed)
+PPT(to_be_analysed)
+Model(to_be_analysed)
