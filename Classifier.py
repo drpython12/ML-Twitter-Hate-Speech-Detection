@@ -10,7 +10,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import string
-# from wordcloud import WordCloud
+from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
@@ -63,26 +63,38 @@ def PPT(df):
     print(df[["tweet", "parsed tweets"]])
 
 # Word cloud generator based on the parsed data
-'''def Wordcloud(df): 
+def Wordcloud(df): 
     # Creating a long string of all tweets classified as hate speech
     words = " ".join([word for word in df["tweet"][df["refined class"] == 1]])
     wc = WordCloud(width=800, height=500, max_font_size=110, max_words=80).generate(words)
     plot.figure(figsize=(12,8))
     plot.axis('off')
     plot.imshow(wc)
-    plot.show()'''
+    plot.show()
 
 # Trains the model
 def Model(df):
+    # Splits the dataset into train and test data for the x-axis (input tweets) and y-axis (classification)
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
+
+    # Initialising the Tfidfvectorizer
     vectorizer = TfidfVectorizer()
+
+    # Stores all of the tweets data in list format
     train_tweets_list = X_train.tolist()
     test_tweets_list = X_test.tolist()
+
+    # Vectorizes train and test tweets into tf-idf scores
     X_train_text = vectorizer.fit_transform(train_tweets_list)
     X_test_text = vectorizer.transform(test_tweets_list)
     
+    # Initialises logistic regression model
     model = LogisticRegression()
+
+    # Fits train x and y axis to model
     model.fit(X_train_text, Y_train)
+
+    # Predicts using test data and outputs the classification report
     predictions = model.predict(X_test_text)
     print(classification_report(Y_test, predictions))
 
@@ -103,3 +115,4 @@ def Model(df):
 Label(file_data)
 PPT(file_data)
 Model(file_data)
+Wordcloud(file_data)
