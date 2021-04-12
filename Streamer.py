@@ -3,50 +3,40 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 import csv
-import APICredentials
 
-class Authenticate():
-    
-    def authenticate(self):
-        auth = OAuthHandler(APICredentials.consumer_key, APICredentials.consumer_key_secret)
-        auth.set_access_token(APICredentials.access_token, APICredentials.access_token_secret)
-        return auth
+access_token = "1315924837211279360-ELgVi4duJG55DVVSLqzHgEXDggqeu9"
+access_token_secret = "GLQpVUkMowiePQlGnPDfTYJyWjwjbvqOLX8JO9LhBihTX"
+consumer_key = "IwlYQW5mIhCeMeSpcdwF8DUzS"
+consumer_key_secret = "InwCsZzwGKYveB8fVboY58MQXvWu3Xa9qxxp7Nt0Nieo9EoWGk"
 
 class Listener(StreamListener):
-
-    def __init__(self, file_store):
-        self.file_store = file_store
 
     def on_status(self, status):
         print(status.text)
 
-    def on_error(self, status):
-        if status == 420:
-            print(status)
-            return False
+        if status.lang == "en":
 
-class Login():
+            if hasattr(status, "extended_tweet"):
+                tweet_text = status.extended_tweet["full_text"]
+            else:
+                tweet_text = status.text
 
-    extracted_data = []
-    #filter_list = []
+            if hasattr(status, "retweeted_status") == False:
 
-    def __init__(self, api = False):
-        
-        self.auth = Authenticate()
-        self.api = tweepy.API(self.auth.authenticate())
-        print("Attempting login...")
-        if self.api.verify_credentials:
-            print("Logged in successfully!")
-        else:
-            print("Error logging in, please check API credentials!")
+                with open("imported_tweets.csv", "a", encoding="utf-8") as file:
+                    file.write("%s, %s, %s, %s, %s,\n" % ("User ID INT", "User ID STR", "Name", "Display Name", "Tweet"))
+                    file.write("%d, %s, %s, %s, %s,\n" % (status.user.id, status.user.id_str, status.user.name, status.user.screen_name, tweet_text))
+
+    def on_error(self, status_code):
+        print("Streaming error", status_code)
         
 if __name__ == "__main__":
-    Login()
-    listener = Listener("imported tweets.csv")
-    auth = OAuthHandler(APICredentials.consumer_key, APICredentials.consumer_key_secret)
-    auth.set_access_token(APICredentials.access_token, APICredentials.access_token_secret)
+    
+    listener = Listener()
+
+    auth = OAuthHandler(consumer_key, consumer_key_secret)
+    auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
-    with open("imported tweets.csv", 'a+', newline='') as TweetCSV:
-            writer = csv.writer(TweetCSV)
-            for tweet in tweepy.Cursor(api.search, q='', lang = 'en', count=5).items():
-                writer.writerow([tweet.id, tweet.created_at, tweet.text])
+
+    stream = Stream(auth=api.auth, listener=listener, tweet_mode="extended")
+    stream.filter(track=["trump"])
