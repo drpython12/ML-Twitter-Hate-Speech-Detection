@@ -2,7 +2,7 @@ CREATE database twittermldata;
 
 use twittermldata;
 
-create table twittermldata.users(
+create table users(
 	user_id bigint not null,
     user_id_string varchar(50),
     user_name varchar(50),
