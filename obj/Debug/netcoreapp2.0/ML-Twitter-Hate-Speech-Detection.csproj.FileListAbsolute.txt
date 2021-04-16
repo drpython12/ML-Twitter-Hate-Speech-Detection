@@ -1,0 +1,11 @@
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\bin\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.deps.json
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\bin\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.runtimeconfig.json
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\bin\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.runtimeconfig.dev.json
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\bin\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.dll
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\bin\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.pdb
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.csprojAssemblyReference.cache
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.csproj.CoreCompileInputs.cache
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.AssemblyInfoInputs.cache
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.AssemblyInfo.cs
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.dll
+C:\Users\gandh_pgfvycx\OneDrive\Documents\Programming\NEA\ML-Twitter-Hate-Speech-Detection\obj\Debug\netcoreapp2.0\ML-Twitter-Hate-Speech-Detection.pdb
