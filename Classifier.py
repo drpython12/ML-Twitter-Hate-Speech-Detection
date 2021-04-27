@@ -34,12 +34,14 @@ stop_words = ["until", "mustn't", "him", "d", "you'd", "which", "himself", "is",
     "no", "doesn", "of", "themselves", "aren't", "ya", "from", "wasn", "weren't", "each", "what", "cant", "they're",
     "amp", "need", "said", "well", "always", "never", "tell", "thats", "i'm", "tell", "day", "ill", "i'll"]
 
-# Look through each tweet's class and label strings that are not hate speech as 0 and any string that is hate speech as 1
+# Look through each tweet's class and label strings that are not hate speech as 0 and any string that is hate 
+# speech as 1
 def Label(df):
     # Replaces original value 0 (hate speech) with 1 and replaces values 1 and 2 (non-hate speech) with 0
     df["refined class"] = df["class"].replace([0,1,2], [1,0,0])
 
 # Pre-processing & parsing of tweet strings for TF-IDF vectorizer
+# Single input df taken; this is the pandas dataframe which contains tweet information to train model
 def PPT(df):
     # Makes all letters in 'tweet' column lowercase
     df["tweet"] = df["tweet"].str.lower()
@@ -111,11 +113,11 @@ def Model(df):
     print(roc_auc_score(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))
     print(classification_report(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))'''
 
-Label(file_data)
-PPT(file_data)
-Model(file_data)
-Wordcloud(file_data)
+if __name__ == "__main__":
 
-to_be_analysed = pd.read_csv("imported tweets.csv")
+    Label(file_data)
+    PPT(file_data)
+    Model(file_data)
+    Wordcloud(file_data)
 
-# If user input from UI asks to analyse tweets
+    to_be_analysed = pd.read_csv("imported tweets.csv")
