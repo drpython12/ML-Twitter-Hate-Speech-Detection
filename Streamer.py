@@ -3,6 +3,7 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 import csv
+import sys
 
 access_token = "1315924837211279360-ELgVi4duJG55DVVSLqzHgEXDggqeu9"
 access_token_secret = "GLQpVUkMowiePQlGnPDfTYJyWjwjbvqOLX8JO9LhBihTX"
@@ -34,6 +35,7 @@ class Listener(StreamListener):
         # Error code presented to user
         print("Streaming error", status_code)
         
+# Classes interpreted and run only when called, after data manipulation
 if __name__ == "__main__":
     
     # Instantiates 'Listener' class
@@ -48,10 +50,11 @@ if __name__ == "__main__":
     # Creates a list to store filters in
     track_list = []
     # Asks the user how many filters to use
-    num_elements = int(input("How many filters would you like to enter in the list? "))
-    for i in range(0, num_elements):
+    # num_elements = int(input("How many filters would you like to enter in the list? "))
+    #for i in range(0, num_elements):
         # Prompts user for filter the number of times they input
-        track_list.append(str(input("Element: ")))
+        #track_list.append(str(input("Element: ")))
+    track_list = sys.argv[1]
 
     # Creates stream and provides neccessary inputs
     stream = Stream(auth=api.auth, listener=listener, tweet_mode="extended")

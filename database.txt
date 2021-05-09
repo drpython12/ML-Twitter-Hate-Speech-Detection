@@ -1,0 +1,37 @@
+CREATE TABLE “User” 
+(“user_id” BigInt, 
+“user_id_string Varchar(50),
+"name_of_user" Varchar(50),
+display_name Varchar(15),
+PRIMARY KEY("user_id")
+);
+
+CREATE TABLE "Tweet"
+("tweet_id" BigInt,
+"tweet_id_string" Text,
+"tweet_content" Varchar(200),
+"user_id" BigInt,
+FOREIGN KEY("user_id") REFERENCES User("user_id")
+);
+
+CREATE TABLE "Tweet Entities"
+("tweet_id" BigInt,
+"created_at" Text,
+"in_reply_to_user_id" Varchar(50),
+"in_reply_to_screen_name" Varchar(50),
+"place.country" TinyText,
+"place.country_code" Char(2),
+"place.full_name" Text,
+"favourite_count" Int,
+"retweet_count" Int,
+"withheld_in_countries" JSON,
+FOREIGN KEY("tweet_id") REFERENCES Tweet("tweet_id")
+);
+
+CREATE TABLE "Tweet Analysis"
+("tweet_id" BigInt,
+"fk_score" Double,
+"tf-idf_score" Double,
+"tokens" JSON
+FOREIGN KEY("tweet_id") REFERENCES Tweet("tweet_id")
+);
