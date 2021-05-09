@@ -1,30 +1,17 @@
-CREATE database twittermldata;
+use TwitterMachineLearningDatabase;
 
-use twittermldata;
-
-create table users(
-	user_id bigint not null,
+create table user(
+	user_id bigint,
     user_id_string varchar(50),
-    user_name varchar(50),
-    twitter_display_name varchar(15),
+    name_of_user varchar(50),
+    display_name varchar(15),
     primary key (user_id)
 );
 
-create table tweets(
-	tweet_id bigint not null,
+create table tweet(
+	tweet_id bigint,
     tweet_id_string varchar(100),
-    tweet_content varchar(280),
-    classification varchar(15),
-    fk_score int,
-    media_id bigint not null,
-    hashtags_id bigint not null,
-    user_id bigint not null,
-    foreign key (user_id) references users(user_id),
-    foreign key (tweet_id) references tweet_hashtags(tweet_id)
-);
-
-create table tweet_hashtags(
-    tweet_id bigint not null,
-    hashtags_id bigint not null,
-    primary key (tweet_id, hashtags_id)
+    tweet_text varchar(200),
+    user_id bigint,
+    foreign key (user_id) references user (user_id)
 );
