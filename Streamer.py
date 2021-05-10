@@ -4,13 +4,18 @@ from tweepy.streaming import StreamListener
 from tweepy import Stream
 import csv
 import sys
+import pandas as pd
+
+tweets_df = pd.DataFrame(columns=['User ID Integer' 'User ID String', 'Name', 'Display Name', 'Tweet ID Integer', 'Tweet ID String', 'Tweet', 'Data Posted', 
+                                  'Reply User ID Integer', 'Reply User ID String', 'Reply User Display Name', 'Country', 'Country Code', 'City/State', 'Number Of Likes',
+                                 'Number Of Retweets', 'Countries Withheld In'])
 
 access_token = "1315924837211279360-ELgVi4duJG55DVVSLqzHgEXDggqeu9"
 access_token_secret = "GLQpVUkMowiePQlGnPDfTYJyWjwjbvqOLX8JO9LhBihTX"
 consumer_key = "IwlYQW5mIhCeMeSpcdwF8DUzS"
 consumer_key_secret = "InwCsZzwGKYveB8fVboY58MQXvWu3Xa9qxxp7Nt0Nieo9EoWGk"
 
-class Listener(StreamListener):
+class Listener(StreamListener, tweets_df):
 
     # Method to obtain tweets as well as relavent metadata
     def on_status(self, status):
@@ -24,11 +29,12 @@ class Listener(StreamListener):
                 # Tweet is regular length
                 tweet_text = status.text
             # Opens CSV file to write tweet and metadata
-            with open("imported_tweets.csv", "a", encoding="utf-8") as file:
+            
+            '''with open("imported_tweets.csv", "a", encoding="utf-8") as file:
                 file.write("%s, %s, %s, %s, %s,\n" % ("User ID INT", "User ID STR", "Name", 
                 "Display Name", "Tweet"))
                 file.write("%d, %s, %s, %s, %s,\n" % (status.user.id, status.user.id_str, 
-                status.user.name, status.user.screen_name, tweet_text))
+                status.user.name, status.user.screen_name, tweet_text))'''
 
     # Method to identify and return any error messages to the user
     def on_error(self, status_code):
