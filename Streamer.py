@@ -6,7 +6,8 @@ import csv
 import sys
 import pandas as pd
 
-tweets_df = pd.DataFrame(columns=['User ID Integer' 'User ID String', 'Name', 'Display Name', 'Tweet ID Integer', 'Tweet ID String', 'Tweet', 'Data Posted', 
+# Creates pandas dataframe
+tweets_df = pd.DataFrame(columns=['User ID Integer' 'User ID String', 'Name', 'Display Name', 'Tweet ID Integer', 'Tweet ID String', 'Tweet', 'Date Posted', 
                                   'Reply User ID Integer', 'Reply User ID String', 'Reply User Display Name', 'Country', 'Country Code', 'City/State', 'Number Of Likes',
                                  'Number Of Retweets', 'Countries Withheld In'])
 
@@ -28,8 +29,30 @@ class Listener(StreamListener, tweets_df):
             else:
                 # Tweet is regular length
                 tweet_text = status.text
-            # Opens CSV file to write tweet and metadata
             
+            tweets_df['User ID Integer'] = status.user.id
+            tweets_df['User ID String'] = status.user.id_str
+            tweets_df['Name'] = status.user.name
+            tweets_df['Display Name'] = status.user.screen_name
+            tweets_df['Tweet ID Integer'] = status.id
+            tweets_df['Tweet ID String'] = status.id_str
+            tweets_df['Tweet'] = tweet_text
+            tweets_df['Date Posted'] = status.created_at
+            tweets_df['Reply User ID Integer'] = status.in_reply_to_user_id
+            tweets_df['Reply User ID String'] = status.in_reply_to_user_id_str
+            tweets_df['Reply User Display Name'] = status.in_reply_to_user_name
+            tweets_df['Number Of Likes'] = status.favorite_count
+            tweets_df['Number Of Retweets'] = status.retweet_count
+            if place.country is not None:
+              tweets_df['Country'] = place.country
+             else:
+              tweets_df['Country'] = 'Null'
+ 
+              tweets_df['Country Code'] = place.country_code
+             else:
+              tweets_df['Country Code'] = 'Null'
+                      
+            # Opens CSV file to write tweet and metadata
             '''with open("imported_tweets.csv", "a", encoding="utf-8") as file:
                 file.write("%s, %s, %s, %s, %s,\n" % ("User ID INT", "User ID STR", "Name", 
                 "Display Name", "Tweet"))
