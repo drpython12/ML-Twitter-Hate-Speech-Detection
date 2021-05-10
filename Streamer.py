@@ -45,12 +45,12 @@ class Listener(StreamListener, tweets_df):
             tweets_df['Number Of Retweets'] = status.retweet_count
             if place.country is not None:
               tweets_df['Country'] = place.country
+              tweets_df['Country Code'] = place.country_code
+              tweets_df['City/State'] = place.full_name
              else:
               tweets_df['Country'] = 'Null'
- 
-              tweets_df['Country Code'] = place.country_code
-             else:
               tweets_df['Country Code'] = 'Null'
+              tweets_df['City/State'] = 'Null'
                       
             # Opens CSV file to write tweet and metadata
             '''with open("imported_tweets.csv", "a", encoding="utf-8") as file:
