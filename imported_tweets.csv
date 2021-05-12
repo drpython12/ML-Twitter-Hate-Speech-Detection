@@ -1,46 +1,100 @@
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1697268019, 1697268019, Bill the trumpeter, billWithTrumpet, RT @RepThomasMassie: Cattle are some of the best soil builders in the world. I build this pond a couple of years ago. Nothing would grow on…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-830832852979826688, 830832852979826688, JanardanK, Janardan2107, RT @bn_kumaraswamy: Cow dung intellectuals(Modi and his chelas) who are responsible for the current grave situation.
-Vs
-The person who caut…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1166491010693681152, 1166491010693681152, Lola💫Loves💖🌌moon🌛sun☀️dawn🌅💕💫, TitanessTheia, RT @BobRmhenry1: Remember when John Kerry went to Iran as a citizen and talked to their leader during the Trump presidency? HE SHOULD HAVE…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-407259348, 407259348, Heidi Ho, DHoProject, @Bro_Pair What about Tiffany Trump’s hairstylist?? https://t.co/yOBtx1CptK,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1297051849296494593, 1297051849296494593, Sugi27~ D-DAY ~, OindrilaPaul12, RT @hello82official: ENHYPEN on Question Parade
-✔️ Expectations: cool martial arts moves
-✔️ Reality: exclusive chicken &amp; cow performance
+User ID Integer,User ID String,Name Of User,Display Name,Tweet ID Integer,Tweet ID String,Tweet,Date Created,Reply User ID Integer,Reply User ID String,Reply User Screen Name,Like Count,Retweet Count,Place
+811454879101231104,811454879101231104,Resistance Central,ResistCentral,1392508437372702720,1392508437372702720,RT @KlasfeldReports: Jeff Rosen refuses to respond to Rep. @GerryConnolly's question about whether Trump asked him to question or take any…,2021-05-12 15:54:17,Null,Null,Null,0,0,Null
+117726899,117726899,Glyn Sanders 💙,glynnyboo,1392508437704101888,1392508437704101888,"RT @BergtunRune: This means that if you are a Republican you are a supporter of domestic terrorism, sedition, insurrection, lying. If that…",2021-05-12 15:54:17,Null,Null,Null,0,0,Null
+23314746,23314746,Michelle Kehoe,historyKehoe,1392508438085738497,1392508438085738497,"RT @WalshFreedom: To succeed in the Republican Party, you have to lie for, with, and about Donald Trump. https://t.co/V5sjO0E6tT",2021-05-12 15:54:17,Null,Null,Null,0,0,Null
+1082353232356102144,1082353232356102144,Hugh Jayness,HughJayness2,1392508438341726212,1392508438341726212,"RT @DennisPerkins5: @RepCawthorn Hey, you’re that Nazi-fetishist accused rapist who lied about his military service. https://t.co/IF2GwUxK4C",2021-05-12 15:54:17,Null,Null,Null,0,0,Null
+766360862,766360862,John Wright MIRM,John09Wright,1392508439105052673,1392508439105052673,RT @skale66: @therecount Well...can you blame him? Those family pictures from the Mexican vacation are  sooo precious! And...in addition to…,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+3258041832,3258041832,Adeline Slaughter,aosteach,1392508439105052672,1392508439105052672,"RT @mtgreenee: I voted a second time to remove Liz Cheney as the chair of the GOP.
 
-W…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1229668931498991618, 1229668931498991618, jim, jim41176247, RT @JackPosobiec: Trump was impeached for allegedly withholding military aid to Ukraine 
+And I stand alongside 74 million+ Trump supporters in o…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+48981762,48981762,Vote Warnock,VoteOssoff,1392508439134310402,1392508439134310402,"RT @AriBerman: Ousting of Liz Cheney, insane 'audit' in AZ, avalanche of GOP voter suppression bills all have same goal: to institutionaliz…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+1276143910939586561,1276143910939586561,God's Trojan Horse. Humbled Soldier,Godstrojanhorse,1392508439184637957,1392508439184637957,"RT @John_Barron_46: Buy Me  A Coffee And Get 4 Trump Golden Coin For Free
 
-Biden and Kamala are withholding surplus medical…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-954766748909228033, 954766748909228033, Ronzonian, RodneyH20797762, @lolly7777 @ProjectLincoln @FoxNews FoxNews admits that they thought Covid-19 was an attack on Trump, then they did a U-turn &amp; actually put out a response. Check the date on the response, ya months went by until FoxNews finally realized it wasn't an attack on Trump but it t was to late the damage was already done. https://t.co/djNe1SVoBz,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-151244816, 151244816, Phodopus Sungorus, fotobus, RT @A4AOntario: MMS started as an autism “cure”. Activists have worked hard to bring its dealers to justice. 
+Click This Link To Buy Me A Coffee ☕️ 
 
-Follow @fierceautie for upda…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-904137377588944896, 904137377588944896, Irene, igruska33, RT @claudiatenney: I had a great meeting with President Trump last weekend. We discussed a range of issues including how we can work togeth…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-820258481944961024, 820258481944961024, Mr. Dahi Bhalla, oye_bread, @Sachin_Taxman @SecularTrainee Yesterday a post suggested that a Trump is being done to Modi but he has earlier survived Demonitisation so he will survive this and they suggest and plan more to criticise this govt.,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1297914899000164353, 1297914899000164353, John Galt, SkepticSkeptic7, RT @RealCandaceO: Imagine if President Donald Trump used taxpayer money to buy his own books to give out to foreigners. 
+https://t.co/4j7mpbwAZw…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+734051597232263168,734051597232263168,AR R,AnnaRosaRegala1,1392508439268630531,1392508439268630531,"@KnowYourWorth25 @EliseStefanik Never forget the Trump family fundraised and donated millions to St Jude &amp; other organizations besides donating their own government salaries as well. 👇
+https://t.co/OCpmt3cuap",2021-05-12 15:54:18,1345804619688140800,1345804619688140800,KnowYourWorth25,0,0,Null
+1089298300119875584,1089298300119875584,Miss Anthrope 😷WEAR A MASK😷,OldWhiteGal1,1392508439583133698,1392508439583133698,"RT @Sulliview: She mailed a single, five page document, anonymously. It told an important truth, and made a difference. And she got the lon…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+17190356,17190356,Quiltygomaw,cnbrodie,1392508439776083971,1392508439776083971,"She will be on CNN, MSNBC, NBC, CBS ......to flame the fire on their hate toward Trump.  They all have such HATE in their hearts and minds.   #BidenBorderCrisis",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+21132805,21132805,Christopher Marc,_ChristopherM,1392508439960621056,1392508439960621056,"Trump is only going to help GOP lose...I know people are happy for him to lose again. However, in the meantime his surrogate loonies are in real power and will be obstructionists for the foreseeable future, look how they are pushing voter suppression. 
 
-That is exactly w…,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-3242764410, 3242764410, jacky smith, jacnthebox1, @Silence72328493 This whole recount is total garbage. It is all based on a complete lie. 1000 percent made up by people to impress Trump because he will never accept that he got beat. https://t.co/PIVRPgh3Rj,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1324016346934452224, 1324016346934452224, kiaan, kiaan0077, @JohnKerry Well people in Iran believe the tap. We never forget you and Obama send bags of US dollars to Iran while we were fighting for our freedom in street. You are just so weak. Did you know Iranian wished for Trump to win the election? Do you know why?,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-282387257, 282387257, M z u k w a s e, TheBlackspice, RT @Africa_Archives: Kenyan Governor launching a cow https://t.co/Yn6p4U3IKG,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-1317350150763925504, 1317350150763925504, PD Bassman, pd_bassman, @t0etag @TheFamousArtBR trouble is, if you now shut your FB account down – which I highly recommend for all of its awfulness, Rohingyas, Cambridge Analytics, Trump, etc etc – it's looks like they bullied you and won. 
+They can do real damage.",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+98952417,98952417,Liberation Martial Artist 🥊,StuffFromSam,1392508440614817798,1392508440614817798,Trump and COVID have proven a lot of what we thought was real was just decorum,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+1239031898246197249,1239031898246197249,Zaratustra,Zaratus72249468,1392508440497606656,1392508440497606656,RT @BreitbartNews: Former President Donald Trump celebrated the news Wednesday that House Republicans had ousted Rep. Liz Cheney (R-WY) fro…,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+2632829667,2632829667,STARR007🇺🇸,AMS0035,1392508441118261254,1392508441118261254,RT @MarkMeadows: President Trump’s leadership for 4 years sent a clear message to the world that the United States would stop at nothing to…,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+127412957,127412957,Tom USA FIRST Dodson,tomdodsonusa1,1392508441281712128,1392508441281712128,"RT @Chicago1Ray: At this point, what Biden needs to do is call Trump and ask him what to do",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+40731331,40731331,kristy ॐ,tinfoilchat,1392508441298497539,1392508441298497539,"RT @sarahkendzior: The GOP intends to grab power through rigging, not by winning people over. Voter suppression, voter intimidation, threat…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+1318853474659061761,1318853474659061761,Max Moos kiest voor het klimaat tegen facisme,MaxMoos9,1392508441374101507,1392508441374101507,"RT @CNN: The US government will no longer blacklist Chinese smartphone maker Xiaomi, lifting a short and contentious ban on Americans inves…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+2829726527,2829726527,push to activate,onehumanbean,1392508441437016068,1392508441437016068,RT @Ionsancho1: Reality Winner was the FBI’s ‘head on a pike’ for Trump. It’s time to set her free. https://t.co/5Z5JeHdmza,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+379739103,379739103,Vote like your life depends on it!🇺🇸,trypeacenow66,1392508441294512128,1392508441294512128,@BillKristol You’re a conservative professional and I wonder if you and your colleagues are concerned that the GOP is encouraging an American Al Queda? It sounds extreme until you consider what may happen to those opposed to Trump and that we’ve had a lot of terror committed in the name of DT,2021-05-12 15:54:18,2800581040,2800581040,BillKristol,0,0,Null
+4693623314,4693623314,Tayth,Awildsage,1392508441428520961,1392508441428520961,"RT @matthewccook5: https://t.co/gtRzTOwFPw I wrote about Dabney Friedrich, the very wealthy Trump-appointed judge who thinks that the CDC d…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+240666204,240666204,Christopher Heffron,CRHeffron,1392508441491542021,1392508441491542021,"RT @JerasIkehorn: BREAKING NEWS: Manhattan DA is signaling 'a good likelihood of a charge' coming against Trump, soon.
 
-fūckers,
-User ID INT, User ID STR, Name, Display Name, Tweet,
-595310399, 595310399, Sir. Juniour, Hon_Tim0, RT @Africa_Archives: Kenyan Governor launching a cow https://t.co/Yn6p4U3IKG,
+Stay Tuned!",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+791688090859540480,791688090859540480,Heather#WearAMask😷BLM JusticeForJamal,BlaisBlais5,1392508441684496390,1392508441684496390,"RT @TimHannan: Who executed Ashli Babbitt?
+
+In no particular order:
+Donald Trump
+Paul Gosar
+Rudy Giuliani
+Mo Brooks
+Ted Cruz
+Josh Hawley
+Do…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+353998453,353998453,Suburban Commando,JTthePodGuy,1392508441780961283,1392508441780961283,Mental health is a massive pandemic that gets largely ignored by those with the ability to help out.,2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+3632076573,3632076573,Mark Gilligan,Gilligan123Mark,1392508441965604866,1392508441965604866,@JackiSchechner Maybe bc everywhere they went there were riots looting and burning as opposed to dozens of Trump rallies for yrs without incident other than supporters being attacked outside,2021-05-12 15:54:18,12231932,12231932,JackiSchechner,0,0,Null
+1158374636306014208,1158374636306014208,Barbi Davis,CaiasMom2014,1392508442817056768,1392508442817056768,"RT @demipal: Trump's Defense Secretary Christopher Miller's Statement Was Presented THIS MORNING &amp; He Alredy Walked It Back. #GOPCowards 
+#…",2021-05-12 15:54:18,Null,Null,Null,0,0,Null
+760150413936963584,760150413936963584,S,Im_with_her_16,1392508443836157953,1392508443836157953,RT @NickKristof: House Republicans purged Cheney with a voice vote rather than recording how each member voted. That's because so many memb…,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+1184623786617921537,1184623786617921537,Schnauzer Mom,Rebecca28049528,1392508444159135758,1392508444159135758,"@LindseyGrahamSC Time is the servant of truth. Trump is far more dangerous now that the balance of power that nominally held him in check are gone. Your lack of courage, integrity, and truthfulness will bite you in the butt. I just hope you don’t take many good Americans down with you.",2021-05-12 15:54:19,432895323,432895323,LindseyGrahamSC,0,0,Null
+1158134381539549184,1158134381539549184,it's just novice,itsjustnovice,1392508444511330311,1392508444511330311,"RT @NPR: ""I will do everything I can to ensure that the former president never again gets anywhere near the Oval Office,"" GOP Rep. Liz Chen…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+583018795,583018795,Dean Pz,Solandus,1392508444700286976,1392508444700286976,"RT @ABC: BREAKING: ""I will do everything I can to ensure that the former president never again gets anywhere near the Oval Office,"" Rep. Li…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+357088284,357088284,Robert Quinn ⭐️🇺🇸,quinnrob76,1392508444553486342,1392508444553486342,'The GOP is broken. It's time for a resistance': More than 100 Republicans - led by 'Anonymous' Trump critic - sign letter threatening to form third party unless it breaks with former President https://t.co/8cLcT0laUE via @MailOnline,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+807232107361824768,807232107361824768,Hans Flikkema,HansFlikkema,1392508444985397252,1392508444985397252,"@ruthbenghiat Trump will l apply the same authoritarian pressure he did apply  to the GOP members, to the American people if ever he gets back into power. He will bully, silence and/or remove anybody who opposes him.  So predictable........so  dangerous….",2021-05-12 15:54:19,985749294,985749294,ruthbenghiat,0,0,Null
+1087087680737943552,1087087680737943552,TheRealJ,WithAnOpinion,1392508445174157317,1392508445174157317,"RT @NPR: ""I will do everything I can to ensure that the former president never again gets anywhere near the Oval Office,"" GOP Rep. Liz Chen…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+1326165252556255237,1326165252556255237,PNWSister,pnw_sister,1392508445031469057,1392508445031469057,@DanRather Didn't we find that out when we tried to impeach trump - twice? They knew exactly what they were doing - this is the 'heart' of the GOP. They are evil and coniving to the core.,2021-05-12 15:54:19,36711022,36711022,DanRather,0,0,Null
+3027098903,3027098903,💛🐝Ebony Edwards-Ellis💛🐝,Eedwardsellis,1392508445258027015,1392508445258027015,"RT @karIyrican: Precisely.
+The enemy of my enemy is STILL MY ENEMY coño! 
+I can’t stand these culo for brains folks.",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+2877204976,2877204976,joe,LilJoeyMadden,1392508445509758984,1392508445509758984,"They removed her from GOP party leadership because she said the election results are true and trump lost.
+
+This is and has been the state of the Republican Party in America.",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+78962736,78962736,KAYLEE BURRIS,KAYLEEBURRIS,1392508445656502279,1392508445656502279,'Justice is coming': Ex-prosecutor zeroes in on the 'really good indication' Trump will face consequences https://t.co/jQ03SHGKPm,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+1161437337668268033,1161437337668268033,Elle Shepard,ShepardMadeline,1392508445752975364,1392508445752975364,@CNNPolitics We should oust McCarthy and every one that follows Trump.,2021-05-12 15:54:19,13850422,13850422,CNNPolitics,0,0,Null
+496238129,496238129,Independent Scotland,barlow_robert,1392508445786615808,1392508445786615808,"RT @Acosta: Following her removal from House GOP leadership, Cheney tells reporters she will do everything she can to prevent Trump from re…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+786289196390547456,786289196390547456,Jax,JforDemocracy,1392508445815869452,1392508445815869452,"RT @AndrewFeinberg: True to form, Fox is obsessing over what time the White House told the press corps that the president was done with pub…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+464982966,464982966,Shawn Owen,jtkstc,1392508445811744773,1392508445811744773,"RT @adgs8: More than 100 Republicans, including former governors and lawmakers, are threatening to form a third party if the GOP doesn't sp…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+1165780659434115074,1165780659434115074,Mildred,Mildred2324,1392508445786574848,1392508445786574848,"RT @mattgaetz: “The move is a victory for Rep. Gaetz and his pro-Trump allies, who have been campaigning against Cheney &amp; her direction for…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+632279524,632279524,Did you wash your hands?,MessFixing,1392508445903900673,1392508445903900673,RT @Timodc: If you think the GOP putting on the Donald Trump suicide vest won’t impact future elections then I’d like to introduce you to S…,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+212587226,212587226,red ice conservative,redicecon,1392508446189232141,1392508446189232141,"@donnastowe1 @SteveDa44400620 @BillKristol She she will, you think Wyoming wants to be represented by someone that has an obsession with talking about Trump and not why Joe Biden’s policies are bad for Wyoming and America.",2021-05-12 15:54:19,4012527893,4012527893,donnastowe1,0,0,Null
+32935077,32935077,Debby Harriettha,debydoodle,1392508446164062212,1392508446164062212,@MattGertz Is Lara trump the best they can do. She is just another piece of 💩 loser like the former guy!,2021-05-12 15:54:19,55376380,55376380,MattGertz,0,0,Null
+841691667602255872,841691667602255872,🌊❄Fight Against Fake News And Propagandist ❄🌊,FightFakeNews4,1392508446281510917,1392508446281510917,"RT @EricBoehlert: remember in January when DC press was sure the GOP was going to stand up to Trump? 
+
+press has gotten this story wrong fo…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+1271065980261687296,1271065980261687296,President Elect Liz Mac,2020lizmac,1392508446587506688,1392508446587506688,RT @ACTforAmerica: Would you attend a Trump rally?,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+946950395791687681,946950395791687681,JWVegas,JWVegas1,1392508446772109315,1392508446772109315,RT @Jeffpalmeri: @Stewie0 @trom771 @JWVegas1 Yup.  Hitler was a big fan of Mussolini.  Trump is right in there too.  Birds of a feather.  M…,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+114549208,114549208,angie de kleine 🇳🇱🇪🇺🇩🇪🇺🇸🇨🇦🗽,adekleine,1392508446726139912,1392508446726139912,"RT @Veronicaromm: Good morning! You’re daily reminder that Trump planned, incited &amp; encouraged Insurrectionists while Capital Police fought…",2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+840968151596691460,840968151596691460,Sharon Bledsoe,SharonSBledsoe,1392508446835105795,1392508446835105795,@PatriciaLSchul2 @_thejman @GregAbbott_TX @SenBryanHughes @ShelbySlawson You’re “still nuts about trump”. Truer words never spoken,2021-05-12 15:54:19,1389243888494424066,1389243888494424066,PatriciaLSchul2,0,0,Null
+1285662967334305793,1285662967334305793,Mr. Pickuls,misterpickuls,1392508446810034176,1392508446810034176,RT @Tarelton: Lethal force should have been used at a much earlier onset. No one should have been allowed to breach the Capitol unharmed. N…,2021-05-12 15:54:19,Null,Null,Null,0,0,Null
+439759935,439759935,WakeUpWorld - ClimateChangeIsReal,Wallyrus51,1392508447120269312,1392508447120269312,RT @thekjohnston: Everything else is just a distraction from this:,2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+236224860,236224860,Reisa Miller 🌊,ReisaMiller,1392508447208267776,1392508447208267776,RT @AriBerman: Truly incredible to hear Mitch McConnell accuse Democrats of rigging the rules with HR1 when he stole 2 Supreme Court seats…,2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+222364365,222364365,Kevin Kostka,mpbx3003,1392508447237812230,1392508447237812230,RT @Independent: BREAKING https://t.co/sAb093ggjO,2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+946518186278686720,946518186278686720,Max Hammer,MaxHammer2018,1392508447594328068,1392508447594328068,"@douglasernst I don't know if a second term for 78 year old Trump is best for the country. I mean look at the current 78  year old president. But, I would love to see the rage that comes from it.",2021-05-12 15:54:20,58602902,58602902,douglasernst,0,0,Null
+1551532544,1551532544,BobbieJ.,bobbiejaneV,1392508447879483408,1392508447879483408,"RT @AdamSchiff: The demonization of those who do not kneel before Trump isn't a one-time occurrence.
+
+As Mitt Romney experienced, recently…",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+16152396,16152396,Serenadubs,serenadubs,1392508448043016203,1392508448043016203,"RT @LucasBrownEyes: -Native communities were hit hardest by COVID
+-Trump withheld aid
+-when we asked for PPE, they sent body bags
+-Ireland…",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+1368914911636709377,1368914911636709377,The Woz,TheWozMan69,1392508448126943237,1392508448126943237,"RT @Timcast: the worlds on fire and media be like ""trump is still bad"" https://t.co/OnYyr7l01j",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+4756795116,4756795116,Esteban Munoz,Estebanoz32,1392508448294805505,1392508448294805505,@LangmanVince If you take your mouth off of Trump's p3n15 for a second maybe you'll see how much of a moron you're being.,2021-05-12 15:54:20,1026576700610621441,1026576700610621441,LangmanVince,0,0,Null
+31419198,31419198,Dana M. Bartram 🇮🇹,Starchild73,1392508448273838080,1392508448273838080,RT @MrMichaelBurkes: Your daily reminder that President Trump was absolutely right about Fauci!,2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+77499983,77499983,TCS,gahome1,1392508448403828738,1392508448403828738,"RT @Chicago1Ray: At this point, what Biden needs to do is call Trump and ask him what to do",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+969328881416126464,969328881416126464,اخبار ایرانیان کانادا Irca news,canada_irca,1392508448861040641,1392508448861040641,RT @nytimes: Breaking News: House Republicans voted to oust Rep. Liz Cheney from their leadership ranks for her refusal to stay quiet over…,2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+961398025351462912,961398025351462912,F3Hacker,f3_hacker,1392508449070669831,1392508449070669831,"RT @DPRK_News: United States political prisoner Elizabeth Cheney sentenced to exile in bitter Wyoming province, for failure to attend secon…",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+1099116240931643392,1099116240931643392,maestrav.av,AvMaestrav,1392508449095835649,1392508449095835649,"RT @charliekirk11: Let me get this straight:
+
+Donald Trump is too dangerous to have an account, according to Twitter. But a designated terr…",2021-05-12 15:54:20,Null,Null,Null,0,0,Null
+3349300152,3349300152,kitsune,doglovingfool,1392508449297215495,1392508449297215495,RT @SethAbramson: (PS9) I would also ask what effort has been made to determine what contact Trump's political team made with Proud Boy age…,2021-05-12 15:54:20,Null,Null,Null,0,0,Null

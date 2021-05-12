@@ -6,17 +6,7 @@ import csv
 import sys
 import pandas as pd
 
-# Creates pandas dataframe
-tweets_df = pd.DataFrame(columns=['User ID Integer' 'User ID String', 'Name', 'Display Name', 'Tweet ID Integer', 'Tweet ID String', 'Tweet', 'Date Posted', 
-                                  'Reply User ID Integer', 'Reply User ID String', 'Reply User Display Name', 'Country', 'Country Code', 'City/State', 'Number Of Likes',
-                                 'Number Of Retweets', 'Countries Withheld In'])
-
-access_token = "1315924837211279360-ELgVi4duJG55DVVSLqzHgEXDggqeu9"
-access_token_secret = "GLQpVUkMowiePQlGnPDfTYJyWjwjbvqOLX8JO9LhBihTX"
-consumer_key = "IwlYQW5mIhCeMeSpcdwF8DUzS"
-consumer_key_secret = "InwCsZzwGKYveB8fVboY58MQXvWu3Xa9qxxp7Nt0Nieo9EoWGk"
-
-class Listener(StreamListener, tweets_df):
+class Listener(StreamListener):
 
     # Method to obtain tweets as well as relavent metadata
     def on_status(self, status):
@@ -30,34 +20,31 @@ class Listener(StreamListener, tweets_df):
                 # Tweet is regular length
                 tweet_text = status.text
             
-            tweets_df['User ID Integer'] = status.user.id
-            tweets_df['User ID String'] = status.user.id_str
-            tweets_df['Name'] = status.user.name
-            tweets_df['Display Name'] = status.user.screen_name
-            tweets_df['Tweet ID Integer'] = status.id
-            tweets_df['Tweet ID String'] = status.id_str
-            tweets_df['Tweet'] = tweet_text
-            tweets_df['Date Posted'] = status.created_at
-            tweets_df['Reply User ID Integer'] = status.in_reply_to_user_id
-            tweets_df['Reply User ID String'] = status.in_reply_to_user_id_str
-            tweets_df['Reply User Display Name'] = status.in_reply_to_user_name
-            tweets_df['Number Of Likes'] = status.favorite_count
-            tweets_df['Number Of Retweets'] = status.retweet_count
-            if status.place.country is not None:
-              tweets_df['Country'] = status.place.country
-              tweets_df['Country Code'] = status.place.country_code
-              tweets_df['City/State'] = status.place.full_name
+            file = open('imported_tweets.csv', 'a', encoding='utf-8')
+            writer = csv.writer(file)
+            if status.in_reply_to_status_id is not None:
+                if status.place is not None:
+                    writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
+                    status.id_str, tweet_text, status.created_at, status.in_reply_to_user_id, status.in_reply_to_user_id_str,
+                    status.in_reply_to_screen_name, status.favorite_count, status.retweet_count, status.place])
+            
+                else:
+                    writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
+                    status.id_str, tweet_text, status.created_at, status.in_reply_to_user_id, status.in_reply_to_user_id_str,
+                    status.in_reply_to_screen_name, status.favorite_count, status.retweet_count, 'Null'])
+            
             else:
-                tweets_df['Country'] = 'Null'
-                tweets_df['Country Code'] = 'Null'
-                tweets_df['City/State'] = 'Null'
-                      
-            # Opens CSV file to write tweet and metadata
-            '''with open("imported_tweets.csv", "a", encoding="utf-8") as file:
-                file.write("%s, %s, %s, %s, %s,\n" % ("User ID INT", "User ID STR", "Name", 
-                "Display Name", "Tweet"))
-                file.write("%d, %s, %s, %s, %s,\n" % (status.user.id, status.user.id_str, 
-                status.user.name, status.user.screen_name, tweet_text))'''
+                if status.place is not None:
+                    writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
+                    status.id_str, tweet_text, status.created_at, 'Null', 'Null',
+                    'Null', status.favorite_count, status.retweet_count, status.place])
+
+                else:
+                    writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
+                    status.id_str, tweet_text, status.created_at, 'Null', 'Null',
+                    'Null', status.favorite_count, status.retweet_count, 'Null'])
+
+            file.close()
 
     # Method to identify and return any error messages to the user
     def on_error(self, status_code):
@@ -67,25 +54,37 @@ class Listener(StreamListener, tweets_df):
 # Classes interpreted and run only when called, after data manipulation
 if __name__ == "__main__":
     
+    # Writes the headings of the data to be stored in the CSV file
+    file = open('imported_tweets.csv', 'a', encoding='utf-8')
+    writer = csv.writer(file)
+    writer.writerow(['User ID Integer', 'User ID String', 'Name Of User', 'Display Name', 'Tweet ID Integer', 'Tweet ID String',
+    'Tweet', 'Date Created', 'Reply User ID Integer', 'Reply User ID String', 'Reply User Screen Name', 'Like Count', 'Retweet Count',
+    'Place'])
+
+    file.close()
+
+    # My Twitter developer account credentials
+    access_token = "1315924837211279360-ELgVi4duJG55DVVSLqzHgEXDggqeu9"
+    access_token_secret = "GLQpVUkMowiePQlGnPDfTYJyWjwjbvqOLX8JO9LhBihTX"
+    consumer_key = "IwlYQW5mIhCeMeSpcdwF8DUzS"
+    consumer_key_secret = "InwCsZzwGKYveB8fVboY58MQXvWu3Xa9qxxp7Nt0Nieo9EoWGk"
+
     # Instantiates 'Listener' class
     listener = Listener()
 
     # Provides the consumer keys to the OAuthHandler function
     auth = OAuthHandler(consumer_key, consumer_key_secret)
+    
     # Provides access tokens
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    # Creates a list to store filters in
-    track_list = []
-    # Asks the user how many filters to use
-    # num_elements = int(input("How many filters would you like to enter in the list? "))
-    #for i in range(0, num_elements):
-        # Prompts user for filter the number of times they input
-        #track_list.append(str(input("Element: ")))
-    track_list = sys.argv[1]
+    # Creates a list to store filters in from the 5th argument fed into the CMD terminal by the user input in the UI
+    # track_list = sys.argv[4]
+    track_list = ['trump']
 
     # Creates stream and provides neccessary inputs
     stream = Stream(auth=api.auth, listener=listener, tweet_mode="extended")
+
     # Filters stream of tweets to match user input
     stream.filter(track=track_list)
