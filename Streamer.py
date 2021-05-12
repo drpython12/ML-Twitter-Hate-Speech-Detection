@@ -80,8 +80,7 @@ if __name__ == "__main__":
     api = tweepy.API(auth)
 
     # Creates a list to store filters in from the 5th argument fed into the CMD terminal by the user input in the UI
-    # track_list = sys.argv[4]
-    track_list = ['trump']
+    track_list = sys.argv[4]
 
     # Creates stream and provides neccessary inputs
     stream = Stream(auth=api.auth, listener=listener, tweet_mode="extended")
