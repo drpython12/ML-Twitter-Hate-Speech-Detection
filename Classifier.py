@@ -16,6 +16,8 @@ import matplotlib.pyplot as plot
 # Creates Pandas dataframe of labeled data csv file for use to train the model
 file_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
 
+analyse = pd.read_csv("imported_tweets.csv")
+
 # List of stop words
 stop_words = ["until", "mustn't", "him", "d", "you'd", "which", "himself", "is", "too", "myself", "for", "shan't", 
     "once", "so", "such", "re", "does", "mightn", "there", "won't", "live", "about", "haven't", "wouldn't", "whom", 
@@ -94,11 +96,8 @@ def Model(df):
     df['prediction'] = pd.Series(predictions, index=X_test.index)
     print(df)
 
-if __name__ == "__main__":
-
+if __name__ == '__main__':
     Label(file_data)
     PPT(file_data)
     Model(file_data)
     # Wordcloud(file_data)
-
-    to_be_analysed = pd.read_csv("imported_tweets.csv")
