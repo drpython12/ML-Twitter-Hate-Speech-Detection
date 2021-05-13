@@ -58,7 +58,7 @@ if __name__ == "__main__":
     file = open('imported_tweets.csv', 'a', encoding='utf-8')
     writer = csv.writer(file)
     writer.writerow(['User ID Integer', 'User ID String', 'Name Of User', 'Display Name', 'Tweet ID Integer', 'Tweet ID String',
-    'Tweet', 'Date Created', 'Reply User ID Integer', 'Reply User ID String', 'Reply User Screen Name', 'Like Count', 'Retweet Count',
+    'tweet', 'Date Created', 'Reply User ID Integer', 'Reply User ID String', 'Reply User Screen Name', 'Like Count', 'Retweet Count',
     'Place'])
 
     file.close()

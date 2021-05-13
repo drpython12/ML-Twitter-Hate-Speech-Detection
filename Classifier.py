@@ -10,7 +10,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import string
-from wordcloud import WordCloud
+#from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
@@ -59,19 +59,16 @@ def PPT(df):
     # Stemming each word of the tweets
     stemmer = PorterStemmer()
     df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()])) 
-    
-    # Tokenize each word
-    df["parsed tweets"] = df["tweet"].apply(lambda x: nltk.WordPunctTokenizer().tokenize(x))
 
 # Word cloud generator based on the parsed data
-def Wordcloud(df): 
+'''def Wordcloud(df): 
     # Creating a long string of all tweets classified as hate speech
     words = " ".join([word for word in df["tweet"][df["refined class"] == 1]])
     wc = WordCloud(width=800, height=500, max_font_size=110, max_words=80).generate(words)
     plot.figure(figsize=(12,8))
     plot.axis('off')
     plot.imshow(wc)
-    plot.show()
+    plot.show()'''
 
 # Trains the model
 def Model(df):
@@ -79,15 +76,10 @@ def Model(df):
     X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
 
     # Initialising the Tfidfvectorizer
-    vectorizer = TfidfVectorizer()
-
-    # Stores all of the tweets data in list format
-    train_tweets_list = X_train.tolist()
-    test_tweets_list = X_test.tolist()
+    vectorizer = TfidfVectorizer().fit(X_train)
 
     # Vectorizes train and test tweets into tf-idf scores
-    X_train_text = vectorizer.fit_transform(train_tweets_list)
-    X_test_text = vectorizer.transform(test_tweets_list)
+    X_train_text = vectorizer.transform(X_train)
     
     # Initialises logistic regression model
     model = LogisticRegression()
@@ -96,28 +88,17 @@ def Model(df):
     model.fit(X_train_text, Y_train)
 
     # Predicts using test data and outputs the classification report
-    predictions = model.predict(X_test_text)
+    predictions = model.predict(vectorizer.transform(X_test))
     print(classification_report(Y_test, predictions))
 
-    '''X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
-    vectorizer = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', max_features=2000)
-    vectorizer.fit(df["tweet"])
-    X_train_tfidf = vectorizer.transform(X_train)
-    X_test_tfidf = vectorizer.transform(X_test)
-
-    def Train(model, train_feature_vector, label, test_feature_vector):
-        model.fit(test_feature_vector, label)
-        predict = model.predict(test_feature_vector)
-        return predict
-
-    print(roc_auc_score(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))
-    print(classification_report(Y_test, Train(LogisticRegression(), X_train_tfidf, Y_train, X_test_tfidf)))'''
+    df['prediction'] = pd.Series(predictions, index=X_test.index)
+    print(df)
 
 if __name__ == "__main__":
 
     Label(file_data)
     PPT(file_data)
     Model(file_data)
-    Wordcloud(file_data)
+    # Wordcloud(file_data)
 
-    to_be_analysed = pd.read_csv("imported tweets.csv")
+    to_be_analysed = pd.read_csv("imported_tweets.csv")
