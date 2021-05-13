@@ -12,11 +12,12 @@ from nltk.stem import PorterStemmer
 import string
 #from wordcloud import WordCloud
 import matplotlib.pyplot as plot
+import sys
 
 # Creates Pandas dataframe of labeled data csv file for use to train the model
 file_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
 
-analyse = pd.read_csv("imported_tweets.csv")
+analyse = pd.read_csv(sys.argv[1])
 
 # List of stop words
 stop_words = ["until", "mustn't", "him", "d", "you'd", "which", "himself", "is", "too", "myself", "for", "shan't", 
