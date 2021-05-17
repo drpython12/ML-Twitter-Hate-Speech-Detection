@@ -1,4 +1,3 @@
-from os import write
 import pyodbc
 import sys
 import csv
@@ -32,9 +31,13 @@ def WriteServer(writeFile):
     cnxn.commit()
 
 def ReadServer():
-    
-    query2 = "SELECT * FROM User"
-    cursor.execute(query2)
+
+    # Creating connection and cursor to locally hosted MySQL server
+    cnxn = pyodbc.connect('DRIVER={Devart ODBC Driver for MySQL}; User ID=root; Password=Palashg12; Server=' + server + '; Database=' + database)
+    cursor = cnxn.cursor()
+
+    query = "SELECT * FROM User"
+    cursor.execute(query)
     row = cursor.fetchone()
     while row:
         print(row)
