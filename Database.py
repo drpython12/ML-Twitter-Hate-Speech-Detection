@@ -1,3 +1,4 @@
+from os import write
 import pyodbc
 import sys
 import csv
@@ -5,12 +6,33 @@ import pandas as pd
 
 def WriteServer(writeFile):
 
-    '''df = pd.read_csv(writeFile)
-    userQuery = "INSERT INTO User VALUES (?, ?, ?, ?)"
-    cursor.execute(userQuery, (df["User ID Integer"], df["User ID String"], df["Name Of User"], df["Display Name"]))
-    cnxn.commit()'''
+    # Creating connection and cursor to locally hosted MySQL server
+    cnxn = pyodbc.connect('DRIVER={Devart ODBC Driver for MySQL}; User ID=root; Password=Palashg12; Server=' + server + '; Database=' + database)
+    cursor = cnxn.cursor()
+
+    # Obtaining input fields for 'User' table
+    writeFile["UII"] = writeFile["User ID Integer"]
+    writeFile["UIS"] = writeFile["User ID String"]
+    writeFile["NOU"] = writeFile["Name Of User"]
+    writeFile["DN"] = writeFile["Display Name"]
+
+    # Obtaining input fields for 'Tweet' table
+    writeFile["TII"] = writeFile["Tweet ID Integer"]
+    writeFile["TIS"] = writeFile["Tweet ID String"]
+
+    # Iterating through each row in every column and inserting fields into database
+    for row in df.itertuples():
+        cursor.execute('''INSERT INTO User VALUES (?, ?, ?, ?)''', 
+        row.UII,
+        row.UIS,
+        row.NOU,
+        row.DN
+        )
+
+    cnxn.commit()
 
 def ReadServer():
+    
     query2 = "SELECT * FROM User"
     cursor.execute(query2)
     row = cursor.fetchone()
@@ -20,15 +42,19 @@ def ReadServer():
 
 if __name__ == '__main__':
 
+    # Obtaining filename from UI's input to console which is based on user's selected file in dialog
+    filename = sys.argv[1]
+
+    # Reading input file as CSV
+    df = pd.read_csv(filename)
+
+    # Declaring driver to use for connection
     driver = 'Devart ODBC Driver for MySQL'
+
+    # Declaring server to connect to
     server = 'localhost'
+
+    # Declaring database to query
     database = 'TwitterMachineLearningDatabase'
 
-    cnxn = pyodbc.connect('DRIVER={Devart ODBC Driver for MySQL}; User ID=root; Password=Palashg12; Server=' + server + '; Database=' + database)
-    cursor = cnxn.cursor()
-
-    filename = "imported_tweets.csv"
-    df = pd.read_csv(filename)
-    userQuery = "INSERT INTO User VALUES (?, ?, ?, ?)"
-    cursor.execute(userQuery, (int(df["User ID Integer"]), str(df["User ID String"]), str(df["Name Of User"]), str(df["Display Name"])))
-    cnxn.commit()
+    WriteServer(df)
