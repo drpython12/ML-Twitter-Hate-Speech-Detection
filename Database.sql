@@ -4,7 +4,7 @@ use TwitterMachineLearningDatabase;
 
 create table User(
 	user_id bigint not null,
-    user_id_string varchar(50) not null,
+    user_id_string varchar(255) not null,
     name_of_user varchar(50),
     display_name varchar(15),
     primary key (user_id)

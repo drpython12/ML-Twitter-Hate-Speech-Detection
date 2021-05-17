@@ -1,19 +1,34 @@
-from sqlalchemy import create_engine
-import mypysql
+import pyodbc
+import sys
+import csv
 import pandas as pd
-import Classifier
 
-dataframe = Classifier.analyse
-sqlEngine = create_engine('mysql+pymysql://root:Palashg12@127.0.0.1/TwitterMachineLearningDatabase')
-dbConnection = sqlEngine.connect()
+def WriteServer(writeFile):
 
-try:
-    frame = dataframe.to_sql('User', dbConnection, if_exists='append');
-except ValueError:
-    print(ValueError)
-except Exception:
-    print(Exception)
-else:
-    print("Query successful");
-finally:
-    dbConnection.close()
+    '''df = pd.read_csv(writeFile)
+    userQuery = "INSERT INTO User VALUES (?, ?, ?, ?)"
+    cursor.execute(userQuery, (df["User ID Integer"], df["User ID String"], df["Name Of User"], df["Display Name"]))
+    cnxn.commit()'''
+
+def ReadServer():
+    query2 = "SELECT * FROM User"
+    cursor.execute(query2)
+    row = cursor.fetchone()
+    while row:
+        print(row)
+        row = cursor.fetchone()
+
+if __name__ == '__main__':
+
+    driver = 'Devart ODBC Driver for MySQL'
+    server = 'localhost'
+    database = 'TwitterMachineLearningDatabase'
+
+    cnxn = pyodbc.connect('DRIVER={Devart ODBC Driver for MySQL}; User ID=root; Password=Palashg12; Server=' + server + '; Database=' + database)
+    cursor = cnxn.cursor()
+
+    filename = "imported_tweets.csv"
+    df = pd.read_csv(filename)
+    userQuery = "INSERT INTO User VALUES (?, ?, ?, ?)"
+    cursor.execute(userQuery, (int(df["User ID Integer"]), str(df["User ID String"]), str(df["Name Of User"]), str(df["Display Name"])))
+    cnxn.commit()
