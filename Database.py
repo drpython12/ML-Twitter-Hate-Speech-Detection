@@ -1,4 +1,3 @@
-from os import times, write
 import pyodbc
 import sys
 import csv
