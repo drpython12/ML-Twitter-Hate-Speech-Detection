@@ -26,7 +26,6 @@ create table TweetEntities(
     in_reply_to_user_id_string varchar(50),
     in_reply_to_screen_name varchar(50),
     country tinytext default null,
-    country_code char(2) default null,
     city_state text default null,
     favourite_count int,
     retweet_count int,
