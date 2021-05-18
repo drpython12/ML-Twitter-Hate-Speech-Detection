@@ -49,7 +49,7 @@ def WriteServer(writeFile):
         )
 
     for row in writeFile.itertuples():
-
+        # Checks if tweet is reply
         if row.IRUI != 'Null':
 
         # Insert query for 'TweetEntities' table
