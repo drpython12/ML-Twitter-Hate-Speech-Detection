@@ -14,11 +14,6 @@ import string
 import matplotlib.pyplot as plot
 import sys
 
-# Creates Pandas dataframe of labeled data csv file for use to train the model
-file_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
-
-analyse = pd.read_csv(sys.argv[1])
-
 # List of stop words
 stop_words = ["until", "mustn't", "him", "d", "you'd", "which", "himself", "is", "too", "myself", "for", "shan't", 
     "once", "so", "such", "re", "does", "mightn", "there", "won't", "live", "about", "haven't", "wouldn't", "whom", 
@@ -61,7 +56,7 @@ def PPT(df):
     
     # Stemming each word of the tweets
     stemmer = PorterStemmer()
-    df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()])) 
+    df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()]))
 
 # Word cloud generator based on the parsed data
 '''def Wordcloud(df): 
@@ -74,16 +69,19 @@ def PPT(df):
     plot.show()'''
 
 # Trains the model
-def Model(df):
+def Model(df1, df2):
     # Splits the dataset into train and test data for the x-axis (input tweets) and y-axis (classification)
-    X_train, X_test, Y_train, Y_test = train_test_split(df["tweet"], df["refined class"], random_state=0)
+    X_train, X_test, Y_train, Y_test = train_test_split(df1["tweet"], df1["refined class"], random_state=0)
 
     # Initialising the Tfidfvectorizer
     vectorizer = TfidfVectorizer().fit(X_train)
 
     # Vectorizes train and test tweets into tf-idf scores
     X_train_text = vectorizer.transform(X_train)
-    
+
+    # Vectorizes tweets input by the user
+    analyse_data = vectorizer.transform(df2["tweet"])
+
     # Initialises logistic regression model
     model = LogisticRegression()
 
@@ -92,13 +90,29 @@ def Model(df):
 
     # Predicts using test data and outputs the classification report
     predictions = model.predict(vectorizer.transform(X_test))
-    print(classification_report(Y_test, predictions))
 
-    df['prediction'] = pd.Series(predictions, index=X_test.index)
-    print(df)
+    df1['Prediction'] = pd.Series(predictions, index=X_test.index)
+
+    # Predicts data based on model fitted using training data
+    analyse_predictions = model.predict(analyse_data)
+
+    # Stores predictions in column of input pandas dataframe
+    df2['Prediction'] = pd.Series(analyse_predictions)
+    df2.to_csv(store_filename)
 
 if __name__ == '__main__':
-    Label(file_data)
-    PPT(file_data)
-    Model(file_data)
+
+    # Creates Pandas dataframe of labeled data csv file for use to train the model
+    test_train_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
+
+    # Reads CSV selected by user from UI
+    analyse = pd.read_csv(sys.argv[1])
+
+    # Saves filename input by the user in UI in which to store result of program
+    store_filename = sys.argv[2]
+
+    Label(test_train_data)
+    PPT(test_train_data)
+    PPT(analyse)
+    Model(test_train_data, analyse)
     # Wordcloud(file_data)
