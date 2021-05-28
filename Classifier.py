@@ -11,7 +11,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import string
-#from wordcloud import WordCloud
+from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 import sys
 from readability import Readability
@@ -43,9 +43,6 @@ def Label(df):
 # Pre-processing & parsing of tweet strings for TF-IDF vectorizer
 # Single input df taken; this is the pandas dataframe which contains tweet information to train model
 def PPT(df):
-    # Calculates and stores Flesch-Kincaid readability ease score
-    df["FK Score"] = df["tweet"].apply(lambda x: Readability(x).flesch())
-
     # Makes all letters in 'tweet' column lowercase
     df["tweet"] = df["tweet"].str.lower()
 
@@ -64,14 +61,14 @@ def PPT(df):
     df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()]))
 
 # Word cloud generator based on the parsed data
-'''def Wordcloud(df): 
+def Wordcloud(df): 
     # Creating a long string of all tweets classified as hate speech
     words = " ".join([word for word in df["tweet"][df["refined class"] == 1]])
     wc = WordCloud(width=800, height=500, max_font_size=110, max_words=80).generate(words)
     plot.figure(figsize=(12,8))
     plot.axis('off')
     plot.imshow(wc)
-    plot.show()'''
+    plot.show()
 
 # Trains the model
 def Model(df1, df2):
@@ -113,15 +110,13 @@ if __name__ == '__main__':
     test_train_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
 
     # Reads CSV selected by user from UI
-    analyse = pd.read_csv("imported_tweets.csv")
-    # sys.argv[1]
+    analyse = pd.read_csv(sys.argv[1])
 
     # Saves filename input by the user in UI in which to store result of program
-    store_filename = "results1.csv"
-    #sys.argv[2]
+    store_filename = sys.argv[2]
 
     Label(test_train_data)
     #PPT(test_train_data)
     PPT(analyse)
-    #Model(test_train_data, analyse)
-    # Wordcloud(file_data)
+    Model(test_train_data, analyse)
+    Wordcloud(test_train_data)
