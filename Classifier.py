@@ -1,3 +1,4 @@
+from typing import Text
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -13,6 +14,7 @@ import string
 #from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 import sys
+from readability import Readability
 
 # List of stop words
 stop_words = ["until", "mustn't", "him", "d", "you'd", "which", "himself", "is", "too", "myself", "for", "shan't", 
@@ -41,6 +43,9 @@ def Label(df):
 # Pre-processing & parsing of tweet strings for TF-IDF vectorizer
 # Single input df taken; this is the pandas dataframe which contains tweet information to train model
 def PPT(df):
+    # Calculates and stores Flesch-Kincaid readability ease score
+    df["FK Score"] = df["tweet"].apply(lambda x: Readability(x).flesch())
+
     # Makes all letters in 'tweet' column lowercase
     df["tweet"] = df["tweet"].str.lower()
 
@@ -74,7 +79,7 @@ def Model(df1, df2):
     X_train, X_test, Y_train, Y_test = train_test_split(df1["tweet"], df1["refined class"], random_state=0)
 
     # Initialising the Tfidfvectorizer
-    vectorizer = TfidfVectorizer().fit(X_train)
+    vectorizer = TfidfVectorizer(max_features=1000).fit(X_train)
 
     # Vectorizes train and test tweets into tf-idf scores
     X_train_text = vectorizer.transform(X_train)
@@ -98,6 +103,8 @@ def Model(df1, df2):
 
     # Stores predictions in column of input pandas dataframe
     df2['Prediction'] = pd.Series(analyse_predictions)
+    df2['TF-IDF Score'] = list(analyse_data)
+
     df2.to_csv(store_filename)
 
 if __name__ == '__main__':
@@ -106,13 +113,15 @@ if __name__ == '__main__':
     test_train_data = pd.read_csv("labeled_data.csv", encoding='cp1252')
 
     # Reads CSV selected by user from UI
-    analyse = pd.read_csv(sys.argv[1])
+    analyse = pd.read_csv("imported_tweets.csv")
+    # sys.argv[1]
 
     # Saves filename input by the user in UI in which to store result of program
-    store_filename = sys.argv[2]
+    store_filename = "results1.csv"
+    #sys.argv[2]
 
     Label(test_train_data)
-    PPT(test_train_data)
+    #PPT(test_train_data)
     PPT(analyse)
-    Model(test_train_data, analyse)
+    #Model(test_train_data, analyse)
     # Wordcloud(file_data)
