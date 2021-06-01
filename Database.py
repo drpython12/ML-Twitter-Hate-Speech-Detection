@@ -2,6 +2,8 @@ import pyodbc
 import sys
 import csv
 import pandas as pd
+import tkinter as tk
+from tkinter import ttk
 
 def WriteServer(writeFile):
 
@@ -78,6 +80,11 @@ def WriteServer(writeFile):
     cnxn.commit()
 
 def ReadServer():
+    
+    #
+    view = tk.Tk()
+    view.title("Analyzed Tweets")
+    view.geometry("600x300")
 
     # Creating connection and cursor to locally hosted MySQL server
     cnxn = pyodbc.connect('DRIVER={Devart ODBC Driver for MySQL}; User ID=root; Password=Palashg12; Server=' + server + '; Database=' + database)
@@ -85,10 +92,50 @@ def ReadServer():
 
     query = "SELECT * FROM User, Tweet, TweetEntities"
     cursor.execute(query)
-    row = cursor.fetchone()
+
+    tree = ttk.Treeview(view)
+    tree["columns"] = ("User ID Integer" ,"User ID String", "Name Of User", "Display Name", "Tweet ID Integer", "Tweet ID String",
+    "Tweet", "Date Created", "Reply User ID Integer", "Reply User ID String", "Reply User Screen Name", "Like Count", "Retweet Count", 
+    "Place")
+    
+    tree.column("User ID Integer", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("User ID String", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Name Of User", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Display Name", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Tweet ID Integer", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Tweet ID String", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Tweet", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Date Created", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Reply User ID Integer", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Reply User ID String", width=50, minwidth=50, anchor=tk.CENTER)
+    tree.column("Like Count", width=20, minwidth=20, anchor=tk.CENTER)
+    tree.column("Retweet Count", width=20, minwidth=20, anchor=tk.CENTER)
+
+    tree.heading("User ID Integer", text="User ID Integer", anchor=tk.CENTER)
+    tree.heading("User ID String", text="User ID String", anchor=tk.CENTER)
+    tree.heading("Name Of User", text="Name Of User", anchor=tk.CENTER)
+    tree.heading("Display Name", text="Display Name", anchor=tk.CENTER)
+    tree.heading("Tweet ID Integer", text="Tweet ID Integer", anchor=tk.CENTER)
+    tree.heading("Tweet ID String", text="Tweet ID String", anchor=tk.CENTER)
+    tree.heading("Tweet", text="Tweet", anchor=tk.CENTER)
+    tree.heading("Date Created", text="Date Created", anchor=tk.CENTER)
+    tree.heading("Reply User ID Integer", text="Reply User ID Integer", anchor=tk.CENTER)
+    tree.heading("Reply User ID String", text="Reply User ID String", anchor=tk.CENTER)
+    tree.heading("Like Count", text="Like Count", anchor=tk.CENTER)
+    tree.heading("Retweet Count", text="Retweet Count", anchor=tk.CENTER)
+
+    '''row = cursor.fetchone()
     while row:
         print(row)
-        row = cursor.fetchone()
+        row = cursor.fetchone()'''
+
+    i = 0
+    for row in cursor:
+        tree.insert('', i, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11]))
+        i = i + 1
+    
+    tree.pack()
+    view.mainloop()
 
 if __name__ == '__main__':
 

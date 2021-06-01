@@ -11,7 +11,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import string
-from wordcloud import WordCloud
+# from wordcloud import WordCloud
 import matplotlib.pyplot as plot
 import sys
 from readability import Readability
@@ -61,7 +61,7 @@ def PPT(df):
     df["tweet"] = df["tweet"].apply(lambda x: " ".join([stemmer.stem(word) for word in x.split()]))
 
 # Word cloud generator based on the parsed data
-def Wordcloud(df): 
+'''def Wordcloud(df): 
     # Creating a long string of all tweets classified as hate speech
     words = " ".join([word for word in df["tweet"][df["refined class"] == 1]])
     wc = WordCloud(width=800, height=500, max_font_size=110, max_words=80).generate(words)
@@ -69,6 +69,7 @@ def Wordcloud(df):
     plot.axis('off')
     plot.imshow(wc)
     plot.show()
+'''
 
 # Trains the model
 def Model(df1, df2):
@@ -116,7 +117,7 @@ if __name__ == '__main__':
     store_filename = sys.argv[2]
 
     Label(test_train_data)
-    #PPT(test_train_data)
+    PPT(test_train_data)
     PPT(analyse)
     Model(test_train_data, analyse)
-    Wordcloud(test_train_data)
+    # Wordcloud(test_train_data)
