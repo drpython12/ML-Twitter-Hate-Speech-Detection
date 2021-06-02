@@ -22,6 +22,7 @@ class Listener(StreamListener):
             
             file = open('imported_tweets.csv', 'a', encoding='utf-8')
             writer = csv.writer(file)
+            
             if status.in_reply_to_status_id is not None:
                 if status.place is not None:
                     writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
@@ -53,6 +54,11 @@ class Listener(StreamListener):
         
 # Classes interpreted and run only when called, after data manipulation
 if __name__ == "__main__":
+
+    # Clears the imported_tweets file before writing to it
+    f = open('imported_tweets.csv', 'r+')
+    f.truncate(0)
+    f.close()
     
     # Writes the headings of the data to be stored in the CSV file
     file = open('imported_tweets.csv', 'a', encoding='utf-8')
@@ -82,8 +88,11 @@ if __name__ == "__main__":
     # Creates a list to store filters in from the 5th argument fed into the CMD terminal by the user input in the UI
     track_list = sys.argv[1]
 
+    # Number of tweets the user wants to obtain
+    num_of_tweets = sys.argv[2]
+
     # Creates stream and provides neccessary inputs
-    stream = Stream(auth=api.auth, listener=listener, tweet_mode="extended")
+    stream = Stream(auth=api.auth, listener=listener)
 
     # Filters stream of tweets to match user input
     stream.filter(track=track_list)
