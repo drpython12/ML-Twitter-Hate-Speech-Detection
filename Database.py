@@ -51,7 +51,7 @@ def WriteServer(writeFile):
 
     # Insert query for 'TweetEntities' table
     for row in writeFile.itertuples():       
-        cursor.execute('''INSERT INTO TweetEntities VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+        cursor.execute('''INSERT INTO TweetEntities VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
         row.TII,
         row.CA,
         row.IRUI,
@@ -96,6 +96,7 @@ def ReadServer():
     tree.column("Reply User ID String", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("Like Count", width=40, minwidth=20, anchor=tk.CENTER)
     tree.column("Retweet Count", width=40, minwidth=20, anchor=tk.CENTER)
+    tree.column("Place", width=40, minwidth=20, anchor=tk.CENTER)
 
     tree.heading("User ID Integer", text="user_id", anchor=tk.CENTER)
     tree.heading("User ID String", text="user_id_string", anchor=tk.CENTER)
@@ -109,6 +110,7 @@ def ReadServer():
     tree.heading("Reply User ID String", text="in_reply_to_user_id_string", anchor=tk.CENTER)
     tree.heading("Like Count", text="favourite_count", anchor=tk.CENTER)
     tree.heading("Retweet Count", text="retweet_count", anchor=tk.CENTER)
+    tree.heading("Place", text="location", anchor=tk.CENTER)
 
     i = 0
     for row in cursor:
