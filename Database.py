@@ -34,7 +34,7 @@ def WriteServer(writeFile):
     # Obtaining input fields for 'TweetAnalysis' table
     writeFile["PD"] = writeFile["Prediction"]
     writeFile["TF"] = writeFile["TF-IDF Score"].astype(str)
-    writeFile["TK"] = writeFile["Tokens"]
+    writeFile["TK"] = writeFile["Tokens"].astype(str)
 
     # Iterating through each row in every column and inserting fields into 'User' table
     for row in writeFile.itertuples():
@@ -64,9 +64,10 @@ def WriteServer(writeFile):
         row.IRUN,
         row.CN,
         row.LC,
-        row.RC,
+        row.RC
         )
 
+    # Insert query for 'TweetAnalysis'
     for row in writeFile.itertuples():
         cursor.execute('''INSERT INTO tweetanalysis VALUES (?, ?, ?, ?)''',
         row.TII,
@@ -92,10 +93,13 @@ def ReadServer():
     cursor.execute(query)
 
     tree = ttk.Treeview(view)
+
+    # Declaring all of the column names for the visual representation of the database
     tree["columns"] = ("User ID Integer" ,"User ID String", "Name Of User", "Display Name", "Tweet ID Integer", "Tweet ID String",
-    "Tweet", "Date Created", "Reply User ID Integer", "Reply User ID String", "Reply User Screen Name", "Place", "Like Count", 
-    "Retweet Count", "TF-IDF Score", "Tokens", "Prediction")
+    "Tweet", "User ID", "Tweet ID", "Date Created", "Reply User ID Integer", "Reply User ID String", "Reply User Screen Name", "Place", 
+    "Like Count", "Retweet Count", "Tweet ID 2", "TF-IDF Score", "Tokens", "Prediction")
     
+    # Allocating width, minimum width, and anchor position for each column
     tree.column("User ID Integer", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("User ID String", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("Name Of User", width=50, minwidth=50, anchor=tk.CENTER)
@@ -103,6 +107,9 @@ def ReadServer():
     tree.column("Tweet ID Integer", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("Tweet ID String", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("Tweet", width=150, minwidth=50, anchor=tk.CENTER)
+    tree.column("Tweet ID", width=0, minwidth=0, anchor=tk.CENTER)
+    tree.column("Tweet ID 2", width=0, minwidth=0, anchor=tk.CENTER)
+    tree.column("User ID", width=0, minwidth=0, anchor=tk.CENTER)
     tree.column("Date Created", width=80, minwidth=50, anchor=tk.CENTER)
     tree.column("Reply User ID Integer", width=100, minwidth=50, anchor=tk.CENTER)
     tree.column("Reply User ID String", width=100, minwidth=50, anchor=tk.CENTER)
@@ -114,6 +121,7 @@ def ReadServer():
     tree.column("Tokens", width=100, anchor=tk.CENTER)
     tree.column("Prediction", width=50, anchor=tk.CENTER)
 
+    # Heading text for each column
     tree.heading("User ID Integer", text="User ID", anchor=tk.CENTER)
     tree.heading("User ID String", text="User ID String", anchor=tk.CENTER)
     tree.heading("Name Of User", text="Name Of User", anchor=tk.CENTER)
@@ -128,11 +136,16 @@ def ReadServer():
     tree.heading("Retweet Count", text="Retweet Count", anchor=tk.CENTER)
     tree.heading("Place", text="Location", anchor=tk.CENTER)
     tree.heading("Prediction", text="Prediction", anchor=tk.CENTER)
-    tree.heading("Tokens", text="Tokens", anchor=tk.CENTER)
+    tree.heading("Tokens", text="Tokens", anchor=tk.CENTER)    
+    tree.heading("Tweet ID", text="TI", anchor=tk.CENTER)
+    tree.heading("Tweet ID 2", text="TI2", anchor=tk.CENTER)
+    tree.heading("User ID", text="UI", anchor=tk.CENTER)
+    tree.heading("TF-IDF Score", text="TF-IDF Score", anchor=tk.CENTER)
 
+    # Iterating through the database and writing rows of data to the tkinter tree model
     i = 0
     for row in cursor:
-        tree.insert('', i, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15]))
+        tree.insert('', i, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19]))
         i = i + 1
     
     tree.pack()
@@ -149,18 +162,15 @@ if __name__ == '__main__':
     # Declaring database to query
     database = 'tweet_data'
 
-    # sys.argv[1]
-    if "w" == "w":
+    if sys.argv[1] == "w":
 
         # Obtaining filename from UI's input to console which is based on user's selected file in dialog
-        filename = "today.csv"
-        #sys.argv[2]
+        filename = sys.argv[2]
 
         # Reading input file as CSV
         df = pd.read_csv(filename)
 
         WriteServer(df)
 
-    # sys.argv[1]
-    elif "r" == "r":
+    elif sys.argv[1] == "r":
         ReadServer()
