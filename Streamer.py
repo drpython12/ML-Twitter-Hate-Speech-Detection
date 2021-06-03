@@ -37,12 +37,12 @@ class Listener(StreamListener):
             else:
                 if status.place is not None:
                     writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
-                    status.id_str, tweet_text, status.created_at, 'Null', 'Null',
+                    status.id_str, tweet_text, status.created_at, 0, 'Null',
                     'Null', status.favorite_count, status.retweet_count, status.place])
 
                 else:
                     writer.writerow([status.user.id, status.user.id_str, status.user.name, status.user.screen_name, status.id,
-                    status.id_str, tweet_text, status.created_at, 'Null', 'Null',
+                    status.id_str, tweet_text, status.created_at, 0, 'Null',
                     'Null', status.favorite_count, status.retweet_count, 'Null'])
 
             file.close()

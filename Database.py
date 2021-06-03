@@ -49,26 +49,25 @@ def WriteServer(writeFile):
         row.UII
         )
 
+    # Insert query for 'TweetEntities' table
     for row in writeFile.itertuples():       
-
-        # Insert query for 'TweetEntities' table
-            cursor.execute('''INSERT INTO TweetEntities VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-            row.TII,
-            row.CA,
-            row.IRUI,
-            row.IRUS,
-            row.IRUN,
-            row.CN,
-            row.CN,
-            row.LC,
-            row.RC,
-            )
+        cursor.execute('''INSERT INTO TweetEntities VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+        row.TII,
+        row.CA,
+        row.IRUI,
+        row.IRUS,
+        row.IRUN,
+        row.CN,
+        row.CN,
+        row.LC,
+        row.RC,
+        )
 
     cnxn.commit()
 
 def ReadServer():
     
-    #
+    # Initializing tkinter library
     view = tk.Tk()
     view.title("Analyzed Tweets")
     view.geometry("1000x1000")
@@ -144,6 +143,6 @@ if __name__ == '__main__':
         df = pd.read_csv(filename)
 
         WriteServer(df)
-    
+
     elif sys.argv[1] == "r":
         ReadServer()
