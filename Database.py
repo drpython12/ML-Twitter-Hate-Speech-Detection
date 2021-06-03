@@ -134,7 +134,7 @@ if __name__ == '__main__':
     server = 'localhost'
 
     # Declaring database to query
-    database = 'TwitterMachineLearningDatabase'
+    database = 'tweet_data'
 
     if sys.argv[1] == "w":
 
