@@ -102,6 +102,7 @@ def Model(df1, df2):
     # Stores predictions in column of input pandas dataframe
     df2['Prediction'] = pd.Series(analyse_predictions)
     df2['TF-IDF Score'] = list(analyse_data)
+    df2['Tokens'] = df2["tweet"].str.split()
 
     df2.to_csv(store_filename)
 
